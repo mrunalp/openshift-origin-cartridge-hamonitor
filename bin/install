@@ -1,8 +1,6 @@
 #!/bin/bash -e
 
-# Just to reproduce the bug:
-#
-# source $OPENSHIFT_CARTRIDGE_SDK_BASH
+source $OPENSHIFT_CARTRIDGE_SDK_BASH
 
 mkdir -p $OPENSHIFT_HAPROXYSTATS_DIR/data
 
