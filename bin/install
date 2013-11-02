@@ -2,7 +2,7 @@
 
 source $OPENSHIFT_CARTRIDGE_SDK_BASH
 
-mkdir -p $OPENSHIFT_HAPROXYSTATS_DIR/data
+mkdir -p $OPENSHIFT_HAMONITOR_DIR/data
 
 echo "HAProxyStats: Installing Puma and Socker..."
 
