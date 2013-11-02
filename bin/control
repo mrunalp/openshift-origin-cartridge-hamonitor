@@ -3,6 +3,8 @@
 source $OPENSHIFT_CARTRIDGE_SDK_BASH
 
 export HAPROXY_STATS_APP_DIR=${OPENSHIFT_HAMONITOR_DIR}usr/app
+export GEM_HOME=${OPENSHIFT_HAMONITOR_DIR}gems
+export PATH=${PATH}:${GEM_HOME}/bin
 
 function start() {
   echo "Starting HAProxyStats"
