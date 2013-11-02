@@ -1,0 +1,33 @@
+---
+Name: hamonitor
+Cartridge-Short-Name: HAMONITOR
+Architecture: noarch
+Display-Name: HAProxy Monitor
+Description: Real-time HAPRoxy monitor
+Version: '0.1'
+Cartridge-Version: 0.0.1
+Cartridge-Vendor: mfojtik
+License: ASL 2.0
+Vendor: mfojtik
+Categories:
+- service
+- embedded
+- web_proxy
+Website: http://github.com/mfojtik/openshift-origin-cartridge-hamonitor
+Scaling:
+  Min: 1
+  Max: 1
+Endpoints:
+- Private-IP-Name: IP
+  Private-Port-Name: PORT
+  Private-Port: 8080
+  Public-Port-Name: PROXY_PORT
+  Protocols:
+  - http
+  - ws
+  Mappings:
+  - Frontend: '/haproxy-monitor'
+    Backend: '/haproxy-monitor'
+    Options:
+      health: true
+      websocket: true

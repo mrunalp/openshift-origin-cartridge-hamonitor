@@ -1,0 +1,14 @@
+#!/bin/bash -e
+
+# Just to reproduce the bug:
+#
+# source $OPENSHIFT_CARTRIDGE_SDK_BASH
+
+mkdir -p $OPENSHIFT_HAPROXYSTATS_DIR/data
+
+echo "HAProxyStats: Installing Puma and Socker..."
+
+gem install puma --no-ri --no-rdoc --quiet
+gem install socker --no-ri --no-rdoc --quiet
+
+client_result "HAProxy monitoring requirements succesfully installed."

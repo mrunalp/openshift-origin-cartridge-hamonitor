@@ -1,0 +1,49 @@
+#!/bin/bash -e
+
+source $OPENSHIFT_CARTRIDGE_SDK_BASH
+
+export HAPROXY_STATS_APP_DIR=${OPENSHIFT_HAPROXYSTATS_DIR}usr/app
+
+function start() {
+  echo "Starting HAProxyStats"
+  puma --bind "tcp://${OPENSHIFT_HAPROXYSTATS_IP}:${OPENSHIFT_HAPROXYSTATS_PORT}" \
+    --daemon --dir ${HAPROXY_STATS_APP_DIR} --environment production \
+    --pidfile ${OPENSHIFT_HAPROXYSTATS_DIR}run/puma.pid \
+    ${HAPROXY_STATS_APP_DIR}/config.ru
+}
+
+function stop() {
+  echo "Stopping HAProxyStats"
+  pumactl --pid ${OPENSHIFT_HAPROXYSTATS_DIR}run/puma.pid stop
+}
+
+function restart() {
+  echo "Restarting HAProxyStats"
+  pumactl --pid ${OPENSHIFT_HAPROXYSTATS_DIR}run/puma.pid restart
+}
+
+function isrunning() {
+  pumactl --pid ${OPENSHIFT_HAPROXYSTATS_DIR}run/puma.pid status
+}
+
+case "$1" in
+    start)
+        start
+    ;;
+    stop)
+        stop
+    ;;
+    restart)
+        stop
+        start
+    ;;
+    status)
+        if isrunning
+        then
+            client_result "HAProxyStats is running"
+        else
+            client_result "HAPRoxyStats is stopped"
+        fi
+        exit 0
+    ;;
+esac
