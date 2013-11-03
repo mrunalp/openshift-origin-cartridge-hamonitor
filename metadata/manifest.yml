@@ -31,3 +31,4 @@ Endpoints:
     Options:
       health: true
       websocket: true
+Source-Url: https://codeload.github.com/mfojtik/openshift-origin-cartridge-hamonitor/tar.gz/master
