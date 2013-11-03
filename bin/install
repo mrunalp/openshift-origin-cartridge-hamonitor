@@ -7,7 +7,7 @@ mkdir -p ${OPENSHIFT_HAMONITOR_DIR}gems
 
 echo "HAProxyStats: Installing Puma and Socker..."
 
-GEM_HOME="${OPENSHIFT_HAMONITOR_DIR}gems" gem install puma --no-ri --no-rdoc --quiet
-GEM_HOME="${OPENSHIFT_HAMONITOR_DIR}gems" gem install socker --no-ri --no-rdoc --quiet
+scl enable ruby193 "GEM_HOME='${OPENSHIFT_HAMONITOR_DIR}gems' gem install puma --no-ri --no-rdoc --quiet"
+scl enable ruby193 "GEM_HOME='${OPENSHIFT_HAMONITOR_DIR}gems' gem install socker --no-ri --no-rdoc --quiet"
 
 client_result "HAProxy monitoring requirements installed successfully."

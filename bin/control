@@ -8,24 +8,24 @@ export PATH=${PATH}:${GEM_HOME}/bin
 
 function start() {
   echo "Starting HAProxyStats"
-  puma --bind "tcp://${OPENSHIFT_HAMONITOR_IP}:${OPENSHIFT_HAMONITOR_PORT}" \
+  scl enable ruby193 "puma --bind 'tcp://${OPENSHIFT_HAMONITOR_IP}:${OPENSHIFT_HAMONITOR_PORT}' \
     --daemon --dir ${HAPROXY_STATS_APP_DIR} --environment production \
     --pidfile ${OPENSHIFT_HAMONITOR_DIR}run/puma.pid \
-    ${HAPROXY_STATS_APP_DIR}/config.ru
+    ${HAPROXY_STATS_APP_DIR}/config.ru"
 }
 
 function stop() {
   echo "Stopping HAProxyStats"
-  pumactl --pid ${OPENSHIFT_HAMONITOR_DIR}run/puma.pid stop
+  scl enable ruby193 "pumactl --pid ${OPENSHIFT_HAMONITOR_DIR}run/puma.pid stop"
 }
 
 function restart() {
   echo "Restarting HAProxyStats"
-  pumactl --pid ${OPENSHIFT_HAMONITOR_DIR}run/puma.pid restart
+  scl enable ruby193 "pumactl --pid ${OPENSHIFT_HAMONITOR_DIR}run/puma.pid restart"
 }
 
 function isrunning() {
-  pumactl --pid ${OPENSHIFT_HAMONITOR_DIR}run/puma.pid status
+  scl enable ruby193 "pumactl --pid ${OPENSHIFT_HAMONITOR_DIR}run/puma.pid status"
 }
 
 case "$1" in
