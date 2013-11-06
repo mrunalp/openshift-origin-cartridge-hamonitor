@@ -13,6 +13,9 @@ Categories:
 - service
 - embedded
 Website: http://github.com/mfojtik/openshift-origin-cartridge-hamonitor
+Scaling:
+  Min: 1
+  Max: -1
 Provides:
 - hamonitor
 Configure-Order:
