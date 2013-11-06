@@ -12,21 +12,22 @@ function ruby19_context() {
 
 function start() {
   echo "Starting HAProxyStats"
-  ruby19_context "puma --dir ${HAMONITOR_APP_DIR} -C ${HAMONITOR_PUMA_CONFIG} ${HAMONITOR_APP}"
+  ruby19_context "puma --dir ${HAMONITOR_APP_DIR} -C ${HAMONITOR_PUMA_CONFIG} \
+    ${HAMONITOR_APP}" &> ${HAMONITOR_APP_DIR}logs/puma.log
 }
 
 function stop() {
   echo "Stopping HAProxyStats"
-  ruby19_context "pumactl --pid ${OPENSHIFT_HAMONITOR_DIR}run/puma.pid stop"
+  ruby19_context "pumactl --state ${OPENSHIFT_HAMONITOR_DIR}run/puma.state stop"
 }
 
 function restart() {
   echo "Restarting HAProxyStats"
-  ruby19_context "pumactl --pid ${OPENSHIFT_HAMONITOR_DIR}run/puma.pid restart"
+  ruby19_context "pumactl --state ${OPENSHIFT_HAMONITOR_DIR}run/puma.state restart"
 }
 
 function isrunning() {
-  ruby19_context "pumactl --pid ${OPENSHIFT_HAMONITOR_DIR}run/puma.pid status"
+  ruby19_context "pumactl --state ${OPENSHIFT_HAMONITOR_DIR}run/puma.state status"
 }
 
 case "$1" in
