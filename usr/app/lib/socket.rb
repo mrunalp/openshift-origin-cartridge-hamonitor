@@ -11,6 +11,8 @@ class TimeServer < Socker::App
 
   def connected(socket, event)
     log "Yay! Somebody just connected, lets start sending him current time."
+    socket.send "Hello!"
+    puts "Message sent!"
   end
 
   def disconnect(socket, event)
