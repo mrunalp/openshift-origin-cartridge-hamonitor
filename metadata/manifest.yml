@@ -14,8 +14,11 @@ Categories:
 - embedded
 Website: http://github.com/mfojtik/openshift-origin-cartridge-hamonitor
 Scaling:
-  Min: -1
+  Min: 1
   Max: -1
+Configure-Order:
+- haproxy
+- hamonitor
 Endpoints:
 - Private-IP-Name: HTTP_IP
   Private-Port-Name: WEB_PORT
