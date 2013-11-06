@@ -2,7 +2,8 @@
 
 source $OPENSHIFT_CARTRIDGE_SDK_BASH
 
-export HAMONITOR_APP=${OPENSHIFT_HAMONITOR_DIR}usr/app/config.ru
+export HAMONITOR_APP_DIR=${OPENSHIFT_HAMONITOR_DIR}usr/app
+export HAMONITOR_APP=${HAMONITOR_APP_DIR}/config.ru
 export HAMONITOR_PUMA_CONFIG=${OPENSHIFT_HAMONITOR_DIR}usr/conf/puma.conf
 
 function ruby19_context() {
@@ -11,7 +12,7 @@ function ruby19_context() {
 
 function start() {
   echo "Starting HAProxyStats"
-  ruby19_context "puma -C ${HAMONITOR_PUMA_CONFIG} ${HAMONITOR_APP}"
+  ruby19_context "puma --dir ${HAMONITOR_APP_DIR} -C ${HAMONITOR_PUMA_CONFIG} ${HAMONITOR_APP}"
 }
 
 function stop() {
