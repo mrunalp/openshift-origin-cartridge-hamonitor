@@ -1,3 +1,5 @@
 require 'socker'
+load './lib/socket.rb'
 
-run lambda { |env| [200, {"Content-Type" => "text/plain"}, ["Hello. The time is #{Time.now}"]] }
+use Rack::Static, :urls => ["/images", "/js", "/css", "/index.html"], :root => "public"
+run Rack::URLMap.new('/' => TimeServer.new.to_app)
