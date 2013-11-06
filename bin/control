@@ -8,7 +8,7 @@ export PATH=${PATH}:${GEM_HOME}/bin
 
 function start() {
   echo "Starting HAProxyStats"
-  scl enable ruby193 "puma --bind 'tcp://${OPENSHIFT_HAMONITOR_IP}:${OPENSHIFT_HAMONITOR_PORT}' \
+  scl enable ruby193 "puma --bind 'tcp://${OPENSHIFT_HAMONITOR_HTTP_IP}:${OPENSHIFT_HAMONITOR_WEB_PORT}' \
     --daemon --dir ${HAPROXY_STATS_APP_DIR} --environment production \
     --pidfile ${OPENSHIFT_HAMONITOR_DIR}run/puma.pid \
     ${HAPROXY_STATS_APP_DIR}/config.ru"

@@ -17,17 +17,17 @@ Scaling:
   Min: 1
   Max: 1
 Endpoints:
-- Private-IP-Name: IP
-  Private-Port-Name: PORT
+- Private-IP-Name: HTTP_IP
+  Private-Port-Name: WEB_PORT
   Private-Port: 8080
-  Public-Port-Name: PROXY_PORT
+  Public-Port-Name: WEB_PROXY_PORT
   Protocols:
   - http
   - ws
   Mappings:
-  - Frontend: '/haproxy-monitor'
-    Backend: '/haproxy-monitor'
+  - Frontend: '/haproxy_monitor'
+    Backend: '/'
     Options:
-      health: true
       websocket: true
+
 Source-Url: https://github.com/mfojtik/openshift-origin-cartridge-hamonitor.git
