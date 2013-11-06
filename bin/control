@@ -2,30 +2,30 @@
 
 source $OPENSHIFT_CARTRIDGE_SDK_BASH
 
-export HAPROXY_STATS_APP_DIR=${OPENSHIFT_HAMONITOR_DIR}usr/app
-export GEM_HOME=${OPENSHIFT_HAMONITOR_DIR}gems
-export PATH=${PATH}:${GEM_HOME}/bin
+export HAMONITOR_APP=${OPENSHIFT_HAMONITOR_DIR}usr/app/config.ru
+export HAMONITOR_PUMA_CONFIG=${OPENSHIFT_HAMONITOR_DIR}usr/conf/puma.conf
+
+function ruby19_context() {
+  GEM_HOME="${OPENSHIFT_HAMONITOR_DIR}gems" PATH="${PATH}:${GEM_HOME}/bin" scl enable ruby193 "$@"
+}
 
 function start() {
   echo "Starting HAProxyStats"
-  scl enable ruby193 "puma --bind 'tcp://${OPENSHIFT_HAMONITOR_HTTP_IP}:${OPENSHIFT_HAMONITOR_WEB_PORT}' \
-    --daemon --dir ${HAPROXY_STATS_APP_DIR} --environment production \
-    --pidfile ${OPENSHIFT_HAMONITOR_DIR}run/puma.pid \
-    ${HAPROXY_STATS_APP_DIR}/config.ru &> ${OPENSHIFT_HAMONITOR_DIR}log/puma.log"
+  ruby19_context "puma -C ${HAMONITOR_PUMA_CONFIG} ${HAMONITOR_APP}"
 }
 
 function stop() {
   echo "Stopping HAProxyStats"
-  scl enable ruby193 "pumactl --pid ${OPENSHIFT_HAMONITOR_DIR}run/puma.pid stop"
+  ruby19_context "pumactl --pid ${OPENSHIFT_HAMONITOR_DIR}run/puma.pid stop"
 }
 
 function restart() {
   echo "Restarting HAProxyStats"
-  scl enable ruby193 "pumactl --pid ${OPENSHIFT_HAMONITOR_DIR}run/puma.pid restart"
+  ruby19_context "pumactl --pid ${OPENSHIFT_HAMONITOR_DIR}run/puma.pid restart"
 }
 
 function isrunning() {
-  scl enable ruby193 "pumactl --pid ${OPENSHIFT_HAMONITOR_DIR}run/puma.pid status"
+  ruby19_context "pumactl --pid ${OPENSHIFT_HAMONITOR_DIR}run/puma.pid status"
 }
 
 case "$1" in

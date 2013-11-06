@@ -9,3 +9,4 @@ locked_files:
 - hooks/*
 - usr/*
 processed_templates:
+- usr/conf/*.erb
