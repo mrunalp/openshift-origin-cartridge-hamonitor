@@ -21,6 +21,10 @@ Provides:
 Configure-Order:
 - haproxy
 - hamonitor
+Group-Overrides:
+- components:
+  - web_framework
+  - hamonitor
 Endpoints:
 - Private-IP-Name: HTTP_IP
   Private-Port-Name: WEB_PORT
