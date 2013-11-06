@@ -13,7 +13,7 @@ function ruby19_context() {
 function start() {
   echo "Starting HAProxyStats"
   ruby19_context "puma --dir ${HAMONITOR_APP_DIR} -C ${HAMONITOR_PUMA_CONFIG} \
-    ${HAMONITOR_APP}" &> ${OPENSHIFT_HAMONITOR_DIR}logs/puma.log
+    ${HAMONITOR_APP}" &> ${OPENSHIFT_HAMONITOR_DIR}log/puma.log
 }
 
 function stop() {
