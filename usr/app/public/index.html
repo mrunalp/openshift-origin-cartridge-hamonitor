@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
   </head>
 <body>
   <div id="time"></div>
 </body>
 <script language="javascript" type="text/javascript">
   var Socket = window.MozWebSocket || window.WebSocket,
-  socket = new Socket('ws://' + location.hostname + ':' + '8000' + '/haproxy_monitor/socket')
+  socket = new Socket('ws://' + location.hostname + ':' + '8080' + '/haproxy-monitor-socket')
   socket.onmessage = function(event) {
     $('#time').html(event.data)
   };

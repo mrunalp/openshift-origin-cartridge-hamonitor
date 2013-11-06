@@ -25,9 +25,10 @@ Endpoints:
   - http
   - ws
   Mappings:
-  - Frontend: '/haproxy_monitor'
+  - Frontend: '/haproxy-monitor'
     Backend: '/'
-    Options:
-      websocket: true
+  - Frontend: '/haproxy-monitor-socket'
+    Backend: '/socket'
+    Options: { "websocket": true }
 
 Source-Url: https://github.com/mfojtik/openshift-origin-cartridge-hamonitor.git
