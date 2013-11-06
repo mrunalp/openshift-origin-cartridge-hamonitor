@@ -11,7 +11,6 @@ License: ASL 2.0
 Vendor: mfojtik
 Categories:
 - service
-- embedded
 Website: http://github.com/mfojtik/openshift-origin-cartridge-hamonitor
 Scaling:
   Min: 1
