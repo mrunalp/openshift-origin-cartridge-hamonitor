@@ -18,7 +18,7 @@ Scaling:
   Max: -1
 Configure-Order:
 - haproxy
-- hamonitor
+- mfojtik-hamonitor-0.1
 Endpoints:
 - Private-IP-Name: HTTP_IP
   Private-Port-Name: WEB_PORT
