@@ -11,10 +11,11 @@ License: ASL 2.0
 Vendor: mfojtik
 Categories:
 - service
+- embedded
 Website: http://github.com/mfojtik/openshift-origin-cartridge-hamonitor
 Scaling:
   Min: 1
-  Max: 1
+  Max: -1
 Endpoints:
 - Private-IP-Name: HTTP_IP
   Private-Port-Name: WEB_PORT
