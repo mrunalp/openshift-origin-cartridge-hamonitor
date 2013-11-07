@@ -1,5 +1,5 @@
 ---
-Name: ha_monitor
+Name: hamonitor
 Cartridge-Short-Name: HAMONITOR
 Architecture: noarch
 Display-Name: HAProxy Monitor
