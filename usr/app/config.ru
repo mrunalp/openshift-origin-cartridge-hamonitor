@@ -6,4 +6,4 @@ use Rack::Static,
   :root => "public",
   :index => 'index.html'
 
-run Rack::URLMap.new('/' => Rack::File.new('public'), '/socket' => TimeServer.new.to_app)
+run Rack::URLMap.new('/' => Rack::File.new('public'), '/haproxy-monitor-socket' => TimeServer.new.to_app)
