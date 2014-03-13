@@ -12,6 +12,7 @@ Vendor: mfojtik
 Categories:
 - service
 - embedded
+- plugin
 Website: http://github.com/mfojtik/openshift-origin-cartridge-hamonitor
 Scaling:
   Min: 1
