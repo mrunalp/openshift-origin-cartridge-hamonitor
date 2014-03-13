@@ -38,7 +38,7 @@ Endpoints:
   - Frontend: '/haproxy-monitor'
     Backend: '/'
   - Frontend: '/haproxy-monitor-socket'
-    Backend: '/socket'
+    Backend: '/haproxy-monitor-socket'
     Options: { "websocket": true }
 
 Source-Url: https://github.com/mfojtik/openshift-origin-cartridge-hamonitor.git
