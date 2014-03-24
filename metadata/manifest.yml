@@ -37,6 +37,7 @@ Endpoints:
   Mappings:
   - Frontend: '/haproxy-monitor'
     Backend: '/'
+    Options: { "websocket": true }
   - Frontend: '/haproxy-monitor-socket'
     Backend: '/haproxy-monitor-socket'
     Options: { "websocket": true }
